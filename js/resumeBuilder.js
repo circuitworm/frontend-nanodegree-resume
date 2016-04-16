@@ -1,22 +1,23 @@
+// BIO start of section
 
-
+// BIO values
 var bio = {
-       "name" :"Tom McDonald"
-      ,"role":"Senior Tech Project Management"
-      ,"contacts":{
-             "mobile":"203.217.1614"
-            ,"email":"circuitworm@gmail.com"
-            ,"github":"twmcd"
-            ,"twitter":"@twmcd"
-            ,"location":"Connecticut"
-          }
-      ,"welcomeMessage":"howdy partner"
-      ,"skills":['ColdFusion','SQL','JavaS']
-      ,"biopic":"https://pbs.twimg.com/profile_images/444124055659347969/oN5Wy0lY.jpeg"
-      ,"display":""
+       "name" :"Tom McDonald",
+      "role":"Senior Tech Project Management",
+      "contacts":{
+              "mobile":"203.217.1614",
+              "email":"circuitworm@gmail.com",
+              "github":"twmcd",
+              "twitter":"@twmcd",
+              "location":"Connecticut"
+              },
+      "welcomeMessage":"howdy partner",
+      "skills":["ColdFusion","SQL","JavaScript"],
+      "biopic":"https://pbs.twimg.com/profile_images/444124055659347969/oN5Wy0lY.jpeg",
+      "display":""
       };
 
-
+// BIO formatting
 var formattedName = HTMLheaderName.replace('%data%',bio.name);
 var formattedRole = HTMLheaderRole.replace('%data%',bio.role);
 var formattedMobile = HTMLmobile.replace('%data%',bio.contacts.mobile);
@@ -26,8 +27,9 @@ var formattedTwitter = HTMLtwitter.replace('%data%',bio.contacts.twitter);
 var formattedLocation = HTMLlocation.replace('%data%',bio.contacts.location);
 var formattedBiopic = HTMLbioPic.replace('%data%',bio.biopic);
 var formattedWelcomeMsg = HTMLwelcomeMsg.replace('%data%',bio.welcomeMessage);
-var formattedSkills = 1
+var formattedSkills = HTMLskills.replace('%data%',bio.skills);
 
+//BIO insert formatted values
 $('#header').prepend(formattedRole);
 $('#header').prepend(formattedName);
 
@@ -35,54 +37,59 @@ contacts = $('#topContacts');
 $(contacts).append(formattedMobile);
 $(contacts).append(formattedEmail);
 $(contacts).append(formattedTwitter);
+$(contacts).append(formattedGithub);
 
 $('#header').append(formattedBiopic);
 $('#header').append(formattedWelcomeMsg);
 
+$("#header").append(HTMLskillsStart);
+$("#skills").append(formattedSkills);
 
+// BIO end of section
 
-// end of BIO section
+// EDUCATION start of section
 
-// start of EDUCATION section
-
-/*
-schools: array of objects with
-         name: string
-         location: string
-         degree: string
-         majors: array of strings
-         dates: integer (graduation date)
-         url: string
-    onlineCourses: array with
-         title: string
-         school: string
-         date: integer (date finished)
-         url: string
-    display: function taking no parameters
-*/
+// EDUCATION values
+var schools = {
+        "name": "Worcester Polytechnic Institute",
+        "location":"Worcester, MA",
+        "dates":"1979 - 1982",
+        "degree":"none",
+        "majors":['Electrical Engineering']
+        };
+var onlineCourses = [
+        {
+        "title":"Intro to HTML and CSS",
+        "school":"Udacity",
+        "date":"01/01/2016",
+        "url":"http://udacity.com/"
+        },
+        {
+        "title":"JavaScript Basics",
+        "school":"Udacity",
+        "date":"01/01/2016",
+        "url":"http://udacity.com/"
+        },
+        {
+        "title":"Front End Web Developer Nanodegree",
+        "school":"Udacity",
+        "date":"01/01/2016",
+        "url":"http://udacity.com/"
+        }
+        ];
 var edu = {
-  schools:[
-    { name: "Worcester Polytechnic Institute"
-    ,location:"Worcester, MA"
-    ,dates:"1979 - 1982"
-    ,degree:"none"
-    ,majors:['Electrical Engineering']
-    }]
-  ,onlineCourses:[
-     {title:"Front End Web Development"
-         ,school:"Udacity"
-         ,date:"01/01/2016"
-         ,url:"http://udacity.com/"}
-    ]
-  ,"display":""
-};
+        "schools":schools,
+        onlineCourses:onlineCourses,
+        "display":""
+        };
 
 
-work.education = function(){
-  $('#workExperience').append(HTMLworkStart);  
-  
+education.edu = function(){
+  //$('#education').append(HTMLworkStart);  
+// EDUCATION formatting  
+   $('#education').append(HTMLschoolStart);  
   var i;
-  for (i = 0; i < work.jobs.length; i++) {
+  for (i = 0; i < (edu.schools.length+1); i++) {
 
     var formattedSchoolName = HTMLschoolName.replace('%data%',edu.schools[i].name);
     var formattedSchoolDegree = HTMLschoolDegree.replace('%data%',edu.schools[i].degree);
@@ -91,10 +98,10 @@ work.education = function(){
     $('#education').append(formattedSchoolName);
     $('#education').append(formattedSchoolDegree);
     $('#education').append(formattedSchoolDates);
+    };
 };
 
-edu.display();
-    
+
 /*
 var HTMLschoolStart = '<div class="education-entry"></div>';
 var HTMLschoolName = '<a href="#">%data%';
@@ -110,76 +117,82 @@ var HTMLonlineDates = '<div class="date-text">%data%</div>';
 var HTMLonlineURL = '<br><a href="#">%data%</a>';
 */
 
+//EDUCATION insert formatted values
 
+//EDUCATION end of section
 
+// WORK start of section
 
-// end of EDUCATION section
-
-// start of WORK section
-
+//WORK values
 var work = {
-    jobs:[
-      {"employer":"SNET"
-      ,"title":"DA operator"
-      ,'location':"Danbury, CT"
-      ,"dates":"1984-1995"
-      ,"description":"Directory Assistance Operator handling 1,500 calls a day"
+    "jobs":[
+      {"employer":"SNET",
+      "title":"DA operator",
+      "location":"Danbury, CT",
+      "dates":"1984-1995",
+      "description":"Directory Assistance Operator handling 1,500 calls a day"
+      },
+      {"employer":"SBC",
+      "title":"Field Manager",
+      "location":"Danbury, CT",
+      "dates":"1995-2004",
+      "description":"manager of 18 splicers responsible for 3 towns"
+      },
+      {"employer":"AT&T",
+      "title":"web developer",
+      "location":"Meriden, CT",
+      "dates":"2004-2016",
+      "description":"web developer for Network Operations"
       } 
-      ,{"employer":"SBC"
-      ,"title":"Field Manager"
-      ,'location':"Danbury, CT"
-      ,"dates":"1995-2004"
-      ,"description":"manager of 18 splicers responsible for 3 towns"
-      } 
-      ,{"employer":"AT&T"
-      ,"title":"web developer"
-      ,'location':"Meriden, CT"
-      ,"dates":"2004-2016"
-      ,"description":"web developer for Network Operations"
-      } 
-      ]
-    ,"display":""
+      ],
+    "display":""
   };
 
+// WORK formatting
+    
+  for (job in work.jobs) {
+    $('#workExperience').append(HTMLworkStart); 
+
+    var formattedWorkEmployer = HTMLworkEmployer.replace('%data%',work.jobs[job].employer);
+    var formattedWorkTitle = HTMLworkTitle.replace('%data%',work.jobs[job].title);
+    var formattedEmployerTitle = formattedWorkEmployer + formattedWorkTitle;
+    $(".work-entry:last").append(formattedEmployerTitle);
+
+    var formattedWorkDates = HTMLworkDates.replace('%data%',work.jobs[job].dates);
+    $(".work-entry:last").append(formattedWorkDates);
+
+    var formattedWorkDescription = HTMLworkDescription.replace('%data%',work.jobs[job].description); 
+    $(".work-entry:last").append(formattedWorkDescription);
+
+    var formattedWorkLocation = HTMLworkLocation.replace('%data%',work.jobs[job].location);
+    $(".work-entry:last").append(formattedWorkLocation);
+    
+    };
+
+
+//WORK insert formatted values
 
 
 
-work.display = function(){
-  $('#workExperience').append(HTMLworkStart);  
-  
-  var i;
-  for (i = 0; i < work.jobs.length; i++) {
+// WORK end of section
 
-      var formattedWorkEmployer = HTMLworkEmployer.replace('%data%',work.jobs[i].employer);
-      var formattedWorkTitle = HTMLworkTitle.replace('%data%',work.jobs[i].title);
-      var formattedWorkLocation = HTMLworkLocation.replace('%data%',work.jobs[i].location);
-      var formattedWorkDates = HTMLworkDates.replace('%data%',work.jobs[i].dates);
-      var formattedWorkDescription = HTMLworkDescription.replace('%data%',work.jobs[i].description);
+// PROJECTS start of section
 
-      $('#workExperience').append(formattedWorkEmployer,formattedWorkTitle,formattedWorkLocation,formattedWorkDates,formattedWorkDescription);
-    }
-};
-
-work.display();
-
-// end of WORK section
-
-// start of PROJECTS section
-
+// PROJECTS values
 var proj = {
-     projects:[
-      { "title":"firstjob"
-      ,"dates":"stringdate"
-      ,"description":"job title"
-      ,"images":[
+      projects:[
+       { "title":"Network Operations LIES"
+      ,"dates":"2002-2008"
+       ,"description":"NtwkOps Line Interface Enterprise System"
+       ,"images":[
          "img01"
         ,"img02"
-        ]
-      }
-      ]
-    ,display:""
-    };
-/*
+         ]
+       }
+       ]
+     ,display:""
+     };
+
 
 var countries = [
   {
@@ -192,13 +205,16 @@ var countries = [
   }
 ]
 
-    projects: array of objects with
-          title: string 
-          dates: string (works with a hyphen between them)
-          description: string
-          images: array with string urls
-    display: function taking no parameters
-*/
+    // projects: array of objects with
+    //       title: string 
+    //       dates: string (works with a hyphen between them)
+    //       description: string
+    //       images: array with string urls
+    // display: function taking no parameters
+// PROJECTS formatting
+
+
+// PROJECTS insert formatted values
 
 
 // end of PROJECTS section  
