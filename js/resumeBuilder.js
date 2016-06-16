@@ -2,20 +2,21 @@
 
 // BIO values
 var bio = {
-       "name" :"Tom McDonald",
-      "role":"Senior Tech Project Management",
-      "contacts":{
-              "mobile":"203.217.1614",
-              "email":"circuitworm@gmail.com",
-              "github":"twmcd",
-              "twitter":"@twmcd",
-              "location":"Connecticut"
-              },
-      "welcomeMessage":"howdy partner",
-      "skills":["ColdFusion","SQL","JavaScript"],
-      "biopic":"https://pbs.twimg.com/profile_images/444124055659347969/oN5Wy0lY.jpeg",
-      "display":""
-      };
+  "name" :"Tom McDonald",
+  "role":"Senior Tech Project Management",
+  "contacts":{
+  "mobile":"203.217.1614",
+  "email":"circuitworm@gmail.com",
+  "github":"twmcd",
+  "twitter":"@twmcd",
+  "location":"Connecticut"
+  },
+  "welcomeMessage":"test, one, too, tree, fore",
+  "skills":["ColdFusion","SQL","JavaScript"],
+ // "biopic":"https://pbs.twimg.com/profile_images/444124055659347969/oN5Wy0lY.jpeg",
+ "biopic":"https://pbs.twimg.com/profile_images/739907792492957696/VOxstCOG_400x400.jpg",
+  "display":""
+  };
 
 // BIO formatting
 var formattedName = HTMLheaderName.replace('%data%',bio.name);
@@ -27,7 +28,7 @@ var formattedTwitter = HTMLtwitter.replace('%data%',bio.contacts.twitter);
 var formattedLocation = HTMLlocation.replace('%data%',bio.contacts.location);
 var formattedBiopic = HTMLbioPic.replace('%data%',bio.biopic);
 var formattedWelcomeMsg = HTMLwelcomeMsg.replace('%data%',bio.welcomeMessage);
-var formattedSkills = HTMLskills.replace('%data%',bio.skills);
+//var formattedSkills = HTMLskills.replace('%data%',bio.skills);
 
 //BIO insert formatted values
 $('#header').prepend(formattedRole);
@@ -43,7 +44,17 @@ $('#header').append(formattedBiopic);
 $('#header').append(formattedWelcomeMsg);
 
 $("#header").append(HTMLskillsStart);
-$("#skills").append(formattedSkills);
+//$("#skills").append(formattedSkills);
+
+displaySkills = function(){
+  var i;
+  for (i = 0; i < (bio.skills.length+1); i++) {
+    var formattedSkills = HTMLskills.replace('%data%',bio.skills[i]);  
+    $('#skills').append(bio.skills[i]);
+    };
+};
+
+displaySkills();
 
 // BIO end of section
 
@@ -84,7 +95,7 @@ var edu = {
         };
 
 
-education.edu = function(){
+function displayEducation(){
   //$('#education').append(HTMLworkStart);  
 // EDUCATION formatting  
    $('#education').append(HTMLschoolStart);  
@@ -102,6 +113,8 @@ education.edu = function(){
 };
 
 
+
+displayEducation();
 /*
 var HTMLschoolStart = '<div class="education-entry"></div>';
 var HTMLschoolName = '<a href="#">%data%';
@@ -149,7 +162,7 @@ var work = {
   };
 
 // WORK formatting
-    
+function displayWork() {    
   for (job in work.jobs) {
     $('#workExperience').append(HTMLworkStart); 
 
@@ -164,11 +177,13 @@ var work = {
     var formattedWorkDescription = HTMLworkDescription.replace('%data%',work.jobs[job].description); 
     $(".work-entry:last").append(formattedWorkDescription);
 
-    var formattedWorkLocation = HTMLworkLocation.replace('%data%',work.jobs[job].location);
-    $(".work-entry:last").append(formattedWorkLocation);
+    // var formattedWorkLocation = HTMLworkLocation.replace('%data%',work.jobs[job].location);
+    // $(".work-entry:last").append(formattedWorkLocation);
     
     };
+}
 
+displayWork();
 
 //WORK insert formatted values
 
