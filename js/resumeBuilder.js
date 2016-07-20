@@ -50,7 +50,8 @@ displaySkills = function(){
   var i;
   for (i = 0; i < (bio.skills.length+1); i++) {
     var formattedSkills = HTMLskills.replace('%data%',bio.skills[i]);  
-    $('#skills').append(bio.skills[i]);
+    $('#skills').append(formattedSkills);
+    // $('#skills').append(bio.skills[i]);
     };
 };
 
@@ -61,13 +62,21 @@ displaySkills();
 // EDUCATION start of section
 
 // EDUCATION values
-var schools = {
+var schools = [{
         "name": "Worcester Polytechnic Institute",
         "location":"Worcester, MA",
         "dates":"1979 - 1982",
         "degree":"none",
         "majors":['Electrical Engineering']
-        };
+        },
+        {
+        "name": "Western CT State University",
+        "location":"Danbury, CT",
+        "dates":"1982 - 1983",
+        "degree":"none",
+        "majors":['Computer Science']
+        }
+        ];
 var onlineCourses = [
         {
         "title":"Intro to HTML and CSS",
@@ -90,7 +99,7 @@ var onlineCourses = [
         ];
 var edu = {
         "schools":schools,
-        onlineCourses:onlineCourses,
+        "onlineCourses":onlineCourses,
         "display":""
         };
 
@@ -98,10 +107,9 @@ var edu = {
 function displayEducation(){
   //$('#education').append(HTMLworkStart);  
 // EDUCATION formatting  
-   $('#education').append(HTMLschoolStart);  
+   $('#education').append(HTMLschoolStart);
   var i;
-  for (i = 0; i < (edu.schools.length+1); i++) {
-
+  for (i = 0; i < (edu.schools.length); i++) {
     var formattedSchoolName = HTMLschoolName.replace('%data%',edu.schools[i].name);
     var formattedSchoolDegree = HTMLschoolDegree.replace('%data%',edu.schools[i].degree);
     var formattedSchoolDates = HTMLschoolDates.replace('%data%',edu.schools[i].dates);
@@ -110,8 +118,22 @@ function displayEducation(){
     $('#education').append(formattedSchoolDegree);
     $('#education').append(formattedSchoolDates);
     };
-};
 
+    $('#education').append(HTMLonlineClasses);
+  var j;
+  for (j = 0; j < (edu.onlineCourses.length); j++) {
+
+    var formattedOnlineTitle = HTMLonlineTitle.replace('%data%',edu.onlineCourses[j].title);
+    var formattedOnlineSchool = HTMLonlineSchool.replace('%data%',edu.onlineCourses[j].school);
+    var formattedOnlineDates = HTMLonlineDates.replace('%data%',edu.onlineCourses[j].date);
+    var formattedOnlineURL = HTMLonlineURL.replace('%data%',edu.onlineCourses[j].url);
+
+    $('#education').append(formattedOnlineTitle);
+    $('#education').append(formattedOnlineSchool);
+    $('#education').append(formattedOnlineDates);
+    $('#education').append(formattedOnlineURL);
+    };
+};
 
 
 displayEducation();
